@@ -8,7 +8,7 @@ android {
             targetSdkVersion 26
             versionCode 90000000
         versionName "9.0.0"
-        manifestPlaceholders = [HMSVERSION:"2.6.1",PACKAGE_NAME: "com.huawei.hmssdkdemo1112", APPID:"100814521", CPID:"10086000000000293"]
+        manifestPlaceholders = [HMSVERSION:"2.6.1",PACKAGE_NAME: "com.huawei.hmssdkdemo1112", APPID:"100814521", CPID:"890086000102252030"]
     }
 
     signingConfigs {
