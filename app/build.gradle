@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+        defaultConfig {
+            applicationId "com.huawei.hmssdkdemo1112"
+            minSdkVersion 19
+            targetSdkVersion 26
+            versionCode 90000000
+        versionName "9.0.0"
+        manifestPlaceholders = [HMSVERSION:"2.6.1",PACKAGE_NAME: "com.huawei.hmssdkdemo1112", APPID:"100814521", CPID:"10086000000000293"]
+    }
+
+    signingConfigs {
+        lyzh {
+            keyAlias 'lyzh'
+            keyPassword 'com.lyzh.marrychat'
+            storeFile file("../key/lyzh.jks")
+            storePassword 'com.lyzh.marrychat'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.lyzh
+        }
+        debug {
+            signingConfig signingConfigs.lyzh
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // 此处版本号仅为示例，请手动修改成实际集成的HMSSDK版本号
+    String HMSSDKVer = '2.6.1.301'
+    compile 'com.huawei.android.hms:iap:'+HMSSDKVer
+    compile 'com.huawei.android.hms:game:'+HMSSDKVer
+    compile 'com.huawei.android.hms:sns:'+HMSSDKVer
+    compile 'com.huawei.android.hms:hwid:'+HMSSDKVer
+    compile 'com.huawei.android.hms:push:'+HMSSDKVer
+    compile 'com.huawei.android.hms:opendevice:'+HMSSDKVer
+
+}
+
+repositories { flatDir { dirs '../aars' } }
